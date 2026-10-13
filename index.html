@@ -1,0 +1,3332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLIM Cab Share | Great Lakes Institute of Management</title>
+  <meta name="description" content="Official cab sharing portal for students of Great Lakes Institute of Management (GLIM) traveling home during holidays to Airport, Central, Egmore, and CMBT.">
+  
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- App Stylesheet -->
+  <style>
+:root {
+  --primary: #0F2744;
+  --primary-light: #1B3E6B;
+  --primary-dark: #0A192C;
+  --accent: #F39C12;
+  --accent-hover: #D68910;
+  --accent-light: #FEF9E7;
+  --accent-gradient: linear-gradient(135deg, #F39C12 0%, #E67E22 100%);
+  --glim-gold: #D4AF37;
+  --glim-navy: #002244;
+  --success: #27AE60;
+  --success-bg: #E8F8F5;
+  --warning: #E67E22;
+  --warning-bg: #FEF5E7;
+  --danger: #E74C3C;
+  --danger-bg: #FDEDEC;
+  --info: #2980B9;
+  --info-bg: #EBF5FB;
+  --bg-main: #F4F7FB;
+  --bg-card: #FFFFFF;
+  --text-main: #1C2833;
+  --text-muted: #626567;
+  --text-light: #95A5A6;
+  --border-color: #E2E8F0;
+  --border-focus: #3498DB;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-hover: 0 12px 30px rgba(15, 39, 68, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Nav */
+.header {
+  background: linear-gradient(135deg, var(--glim-navy) 0%, var(--primary-light) 100%);
+  color: #FFFFFF;
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0, 34, 68, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.logo-badge {
+  background: var(--accent-gradient);
+  color: #000;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.4);
+}
+
+.logo-text h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.logo-text span {
+  font-size: 0.75rem;
+  color: #CBD5E1;
+  font-weight: 400;
+}
+
+.user-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.user-info-roll {
+  font-size: 0.7rem;
+  color: #F8FAFC;
+  opacity: 0.85;
+}
+
+.btn-switch-user {
+  background: none;
+  border: none;
+  color: #CBD5E1;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+.btn-switch-user:hover {
+  color: #FFFFFF;
+}
+
+/* Nav Tabs */
+.tabs-bar {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 65px;
+  z-index: 90;
+}
+
+.tabs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  padding: 0.9rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+  background: rgba(15, 39, 68, 0.03);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--accent);
+  background: rgba(243, 156, 18, 0.06);
+}
+
+.tab-badge {
+  background: var(--primary);
+  color: #FFF;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+}
+
+.tab-btn.active .tab-badge {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Main Layout */
+.main-content {
+  max-width: 1200px;
+  margin: 1.75rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+  width: 100%;
+}
+
+/* Hero & Announcement Bar */
+.hero-banner {
+  background: linear-gradient(135deg, #0F2744 0%, #1A365D 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(243, 156, 18, 0.2) 0%, rgba(243, 156, 18, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-text p {
+  color: #E2E8F0;
+  font-size: 0.95rem;
+  max-width: 600px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Cards & Containers */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Form Styles */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  padding: 0.75rem 0.95rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #FFFFFF;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15, 39, 68, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-helper {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-accent {
+  background: var(--accent-gradient);
+  color: #000000;
+  font-weight: 700;
+}
+.btn-accent:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+.btn-whatsapp:hover {
+  background: #20BA5A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main);
+}
+.btn-outline:hover {
+  background: #F8FAFC;
+  border-color: var(--text-muted);
+}
+
+.btn-danger-outline {
+  background: transparent;
+  border: 1.5px solid var(--danger);
+  color: var(--danger);
+}
+.btn-danger-outline:hover {
+  background: var(--danger-bg);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+}
+
+/* Match Result Cards */
+.match-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.25rem;
+}
+
+.ride-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.ride-card:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.ride-card.exact-match {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #FFFCF5 0%, #FFFFFF 100%);
+}
+
+.ride-badge-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.time-diff-badge {
+  background: #FEF9E7;
+  color: #B7791F;
+  border: 1px solid #F6E05E;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.time-diff-badge.exact {
+  background: #E8F8F5;
+  color: #1E8449;
+  border-color: #A3E4D7;
+}
+
+.status-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.status-badge.found {
+  background: #EAECEE;
+  color: #5D6D7E;
+}
+.status-badge.cancelled {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.ride-type-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ride-type-pill.have-cab {
+  background: #EBF5FB;
+  color: #1A5276;
+  border: 1px solid #AED6F1;
+}
+
+.ride-type-pill.need-cab {
+  background: #F4ECF7;
+  color: #6C3483;
+  border: 1px solid #D7BDE2;
+}
+
+.student-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.student-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.student-details h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.student-details span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.route-info {
+  background: #F8FAFC;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.route-point {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.route-point .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.route-point .dot.origin { background: #3498DB; }
+.route-point .dot.dest { background: var(--accent); }
+
+.route-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.meta-tag {
+  font-size: 0.72rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.flight-tag {
+  background: #F0F9FF;
+  border-color: #BAE6FD;
+  color: #0369A1;
+  font-weight: 600;
+}
+
+.ride-notes {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  background: #FAFAFA;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+/* Call to Action Box */
+.post-fallback-box {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+  border: 2px dashed #F39C12;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.post-fallback-box h3 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.post-fallback-box p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 1.25rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-muted);
+}
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.empty-state h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+/* Modal */
+.modal-backdrop, .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 25, 44, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal-backdrop.active, .modal-overlay.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.modal-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.modal-backdrop.active .modal-card {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.modal-header h3 {
+  font-size: 1.35rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toast {
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-left: 4px solid var(--accent);
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+  .hero-stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo-group" onclick="switchTab('search')">
+        <div class="logo-badge">GLIM</div>
+        <div class="logo-text">
+          <h1>Cab Share</h1>
+          <span>Great Lakes Institute of Management</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <button id="sheetsSyncBtn" class="btn btn-outline btn-sm" onclick="openSheetsSyncModal()" style="display: none; border-color: rgba(255,255,255,0.3); color: #FFFFFF; font-size: 0.8rem; padding: 0.35rem 0.75rem;" title="Google Sheets Cloud Sync (Admin)">
+          <span id="syncStatusDot">📊</span> <span id="syncStatusText">Cloud Sync</span>
+        </button>
+        <div id="userProfileContainer">
+          <!-- Injected dynamically via app.js -->
+          <button class="btn btn-accent btn-sm" onclick="openLoginModal()">
+            <span>👤</span> Student Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-bar">
+    <div class="tabs-container">
+      <button class="tab-btn active" data-tab="search">
+        <span>🔍</span> Find Cab Buddy <span class="tab-badge">±1h Match</span>
+      </button>
+      <button class="tab-btn" data-tab="post">
+        <span>➕</span> Post Ride to Public Pool
+      </button>
+      <button class="tab-btn" data-tab="pool">
+        <span>🌐</span> Campus Public Feed
+      </button>
+      <button class="tab-btn" data-tab="dashboard">
+        <span>📋</span> My Dashboard & Rides
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero Campus Banner & Quick Stats -->
+    <section class="hero-banner">
+      <div class="hero-text">
+        <h2>Heading Home for the Term Break? 🧳✈️</h2>
+        <p>Connect with fellow Great Lakers heading to Chennai Airport (MAA), Chennai Central, Egmore, or CMBT. Split fares, track real-time seat availability, and travel safely together.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value" id="statActiveRides">--</div>
+          <div class="stat-label">Active Rides</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statTotalStudents">--</div>
+          <div class="stat-label">GLIM Students</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statMatchedRides">--</div>
+          <div class="stat-label">Buddies Matched</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. TAB: FIND CAB BUDDY (SEARCH & MATCH) -->
+    <section id="panel-search" class="tab-panel">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🎯</span> Search Matching Travel Plans
+          </div>
+          <span class="meta-tag" style="background: var(--info-bg); color: var(--info); font-weight: 600;">
+            ⚡ Auto-matches within ±1 Hour window (Upcoming trips only)
+          </span>
+        </div>
+
+        <form id="searchRidesForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="searchOrigin">📍 Starting From</label>
+              <select id="searchOrigin" class="form-select" required>
+                <option value="GLIM Campus (Manamai)" selected>GLIM Campus (Manamai / ECR)</option>
+                <option value="Chennai Airport (MAA) - Domestic">Chennai Airport (MAA) - Domestic</option>
+                <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International</option>
+                <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+                <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+                <option value="Other / Custom Chennai Location">Other / Custom Location</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="searchDestination">🏁 Heading To (Destination)</label>
+              <select id="searchDestination" class="form-select" required>
+                <option value="Chennai Airport (MAA) - Domestic" selected>Chennai Airport (MAA) - Domestic Flights</option>
+                <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International Flights</option>
+                <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+                <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+                <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam (KCBT) Bus Terminus</option>
+                <option value="Tambaram Railway Station / Bus Stand">Tambaram Railway Station / Bus Stand</option>
+                <option value="GLIM Campus (Manamai)">GLIM Campus (Manamai / ECR)</option>
+                <option value="Other / Custom Chennai Location">Other / Custom Chennai Location</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="searchDate">📅 Date of Travel</label>
+              <input type="date" id="searchDate" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="searchTime">⏰ Preferred Departure Time</label>
+              <input type="time" id="searchTime" class="form-input" required>
+              <span class="form-helper">We will find students within ±1 hour of this time</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+            <button type="submit" class="btn btn-accent btn-lg" style="width: 100%; max-width: 320px;">
+              <span>🔍</span> Find Cab Buddies
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Dynamic Search & Match Results Section -->
+      <div id="searchResultsSection"></div>
+    </section>
+
+    <!-- 2. TAB: POST RIDE TO PUBLIC POOL -->
+    <section id="panel-post" class="tab-panel" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>📢</span> Post Your Travel Plan to Public Pool
+          </div>
+          <span class="meta-tag" style="background: var(--accent-light); color: var(--accent-hover); font-weight: 700;">
+            🚀 No constraints • Open to all campus students
+          </span>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Whether you have a cab booked with 1-3 spare seats, or you are looking for fellow Great Lakers to book together, publish your trip details below.
+        </p>
+
+        <form id="postRideForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="postOrigin">📍 Origin</label>
+              <select id="postOrigin" class="form-select" required>
+                <option value="GLIM Campus (Manamai)" selected>GLIM Campus (Manamai / ECR)</option>
+                <option value="Chennai Airport (MAA) - Domestic">Chennai Airport (MAA) - Domestic</option>
+                <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International</option>
+                <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+                <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+                <option value="Tambaram Railway Station / Bus Stand">Tambaram Railway Station / Bus Stand</option>
+                <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam (KCBT) Bus Terminus</option>
+                <option value="Other / Custom Chennai Location">Other / Custom Location</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postDestination">🏁 Destination</label>
+              <select id="postDestination" class="form-select" required>
+                <option value="Chennai Airport (MAA) - Domestic" selected>Chennai Airport (MAA) - Domestic</option>
+                <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International</option>
+                <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+                <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+                <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam (KCBT) Bus Terminus</option>
+                <option value="Tambaram Railway Station / Bus Stand">Tambaram Railway Station / Bus Stand</option>
+                <option value="GLIM Campus (Manamai)">GLIM Campus (Manamai / ECR)</option>
+                <option value="Other / Custom Chennai Location">Other / Custom Location</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postDate">📅 Travel Date</label>
+              <input type="date" id="postDate" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postTime">⏰ Departure Time</label>
+              <input type="time" id="postTime" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postRideType">🚖 Cab Status</label>
+              <select id="postRideType" class="form-select" required>
+                <option value="LOOKING_FOR_CAB" selected>🙋 Looking for cab / co-passengers to book together</option>
+                <option value="HAVE_CAB_OFFERING_SEATS">🚖 Already have cab booked (Offering spare seats)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postSeats">👥 Total Cab Seats (Total Capacity)</label>
+              <select id="postSeats" class="form-select" required>
+                <option value="1">1 Seat Needed / Available</option>
+                <option value="2">2 Seats (e.g. Hatchback / 2 People)</option>
+                <option value="3" selected>3 Seats (Sedan / Uber Premier)</option>
+                <option value="4">4 Seats (Sedan / Prime)</option>
+                <option value="6">6 Seats (Innova / XL)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postLuggage">🧳 Luggage Size</label>
+              <select id="postLuggage" class="form-select">
+                <option value="Light">Light (Handbag / Backpack)</option>
+                <option value="Medium" selected>Medium (1 Trolley + 1 Backpack)</option>
+                <option value="Heavy">Heavy (Multiple large suitcases)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postFlightTrain">✈️/🚆 Flight / Train No. (Optional)</label>
+              <input type="text" id="postFlightTrain" class="form-input" placeholder="e.g., Indigo 6E-204 at 18:00 or Vande Bharat">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="postNotes">📝 Additional Notes (Optional)</label>
+              <textarea id="postNotes" class="form-textarea" placeholder="e.g., Splitting fare via UPI, cab booked on MakeMyTrip / Uber XL, willing to adjust departure by 20 mins..."></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+            <button type="submit" class="btn btn-accent btn-lg" style="width: 100%; max-width: 320px;">
+              <span>🚀</span> Post to Campus Pool
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 3. TAB: CAMPUS PUBLIC FEED (BROWSE ALL) -->
+    <section id="panel-pool" class="tab-panel" style="display: none;">
+      <div class="card-header" style="margin-bottom: 1rem;">
+        <div class="card-title">
+          <span>🌐</span> Explore Upcoming Campus Travel Posts
+        </div>
+        <span class="meta-tag" style="background: var(--success-bg); color: var(--success); font-weight: 600;">
+          🟢 Real-time Seat Tracking Active
+        </span>
+      </div>
+
+      <!-- Filters Bar -->
+      <div class="filter-bar">
+        <div style="flex: 1; min-width: 200px;">
+          <select id="poolDestFilter" class="form-select">
+            <option value="ALL">All Destinations</option>
+            <option value="Chennai Airport (MAA) - Domestic">Airport - Domestic</option>
+            <option value="Chennai Airport (MAA) - International">Airport - International</option>
+            <option value="Chennai Central Railway Station (MAS)">Chennai Central Station</option>
+            <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Station</option>
+            <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam Bus</option>
+            <option value="Tambaram Railway Station / Bus Stand">Tambaram Station</option>
+          </select>
+        </div>
+
+        <div style="flex: 1; min-width: 160px;">
+          <input type="date" id="poolDateFilter" class="form-input">
+        </div>
+
+        <div style="flex: 1; min-width: 180px;">
+          <select id="poolTypeFilter" class="form-select">
+            <option value="ALL">All Post Types</option>
+            <option value="HAVE_CAB_OFFERING_SEATS">🚖 Cab Booked (Offering Seats)</option>
+            <option value="LOOKING_FOR_CAB">🙋 Looking for Cab</option>
+          </select>
+        </div>
+
+        <button id="clearPoolFilterBtn" class="btn btn-outline btn-sm">
+          Reset Filters
+        </button>
+      </div>
+
+      <!-- Feed Container -->
+      <div id="poolFeedContainer"></div>
+    </section>
+
+    <!-- 4. TAB: MY DASHBOARD & RIDES -->
+    <section id="panel-dashboard" class="tab-panel" style="display: none;">
+      <div class="card-header" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>📋</span> My Posted Rides & Co-Passenger Tracking
+        </div>
+        <button class="btn btn-accent btn-sm" onclick="switchTab('post')">
+          <span>➕</span> Post New Ride
+        </button>
+      </div>
+
+      <!-- Active vs Past Tabs -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+        <button id="dashboardTabActive" class="btn btn-sm btn-primary" onclick="setDashboardView('active')">
+          🚀 Active & Upcoming Trips
+        </button>
+        <button id="dashboardTabPast" class="btn btn-sm btn-outline" onclick="setDashboardView('past')">
+          📜 Past & Completed Trips (History)
+        </button>
+      </div>
+
+      <div id="myRidesContainer"></div>
+    </section>
+
+  </main>
+
+  <!-- Direct GLIM Student Login Modal -->
+  <div id="loginModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🎓 GLIM Student Login</h3>
+        <button id="closeModalBtn" class="close-modal-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+
+      <div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Enter your GLIM Roll Number, Full Name, and WhatsApp mobile number to connect and share rides with batchmates.
+        </p>
+
+        <form id="directLoginForm">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="loginRoll">Roll Number (FT / DM / PGPM / PGDM)</label>
+            <input type="text" id="loginRoll" class="form-input" placeholder="e.g. FT271049 or DM24055" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="loginName">Full Name</label>
+            <input type="text" id="loginName" class="form-input" placeholder="e.g. Ankit Agrawal" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" for="loginPhone">WhatsApp Mobile Number</label>
+            <input type="tel" id="loginPhone" class="form-input" placeholder="e.g. 9876543210" required>
+            <span class="form-helper">10-digit mobile number so cab buddies can WhatsApp you</span>
+          </div>
+
+          <button type="submit" id="btnLoginSubmit" class="btn btn-accent" style="width: 100%;">
+            🚀 Login & Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Ride Modal -->
+  <div id="editRideModal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>✏️ Edit Ride Details & Seats</h3>
+        <button id="closeEditModalBtn" class="close-modal-btn">&times;</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Update your travel destination, timing, seat capacity, or notes.
+      </p>
+
+      <form id="editRideForm">
+        <input type="hidden" id="editRideId">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="editOrigin">📍 Origin</label>
+            <select id="editOrigin" class="form-select" required>
+              <option value="GLIM Campus (Manamai)">GLIM Campus (Manamai / ECR)</option>
+              <option value="Chennai Airport (MAA) - Domestic">Chennai Airport (MAA) - Domestic</option>
+              <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International</option>
+              <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+              <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+              <option value="Tambaram Railway Station / Bus Stand">Tambaram Railway Station / Bus Stand</option>
+              <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam (KCBT) Bus Terminus</option>
+              <option value="Other / Custom Chennai Location">Other / Custom Location</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editDestination">🏁 Destination</label>
+            <select id="editDestination" class="form-select" required>
+              <option value="Chennai Airport (MAA) - Domestic">Chennai Airport (MAA) - Domestic</option>
+              <option value="Chennai Airport (MAA) - International">Chennai Airport (MAA) - International</option>
+              <option value="Chennai Central Railway Station (MAS)">Chennai Central Railway Station (MAS)</option>
+              <option value="Chennai Egmore Railway Station (MS)">Chennai Egmore Railway Station (MS)</option>
+              <option value="CMBT / Kilambakkam (KCBT) Bus Terminus">CMBT / Kilambakkam (KCBT) Bus Terminus</option>
+              <option value="Tambaram Railway Station / Bus Stand">Tambaram Railway Station / Bus Stand</option>
+              <option value="GLIM Campus (Manamai)">GLIM Campus (Manamai / ECR)</option>
+              <option value="Other / Custom Chennai Location">Other / Custom Location</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editDate">📅 Travel Date</label>
+            <input type="date" id="editDate" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editTime">⏰ Departure Time</label>
+            <input type="time" id="editTime" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editRideType">🚖 Cab Status</label>
+            <select id="editRideType" class="form-select" required>
+              <option value="LOOKING_FOR_CAB">🙋 Looking for cab / co-passengers</option>
+              <option value="HAVE_CAB_OFFERING_SEATS">🚖 Cab booked (Offering seats)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editTotalSeats">👥 Total Seats</label>
+            <select id="editTotalSeats" class="form-select" required>
+              <option value="1">1 Seat</option>
+              <option value="2">2 Seats</option>
+              <option value="3">3 Seats</option>
+              <option value="4">4 Seats</option>
+              <option value="6">6 Seats</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editFilledSeats">👤 Filled Seats (Buddies Joined)</label>
+            <select id="editFilledSeats" class="form-select" required>
+              <option value="0">0 Seats Filled (All available)</option>
+              <option value="1">1 Seat Filled</option>
+              <option value="2">2 Seats Filled</option>
+              <option value="3">3 Seats Filled</option>
+              <option value="4">4 Seats Filled</option>
+              <option value="5">5 Seats Filled</option>
+              <option value="6">6 Seats Filled (Full)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editLuggage">🧳 Luggage</label>
+            <select id="editLuggage" class="form-select">
+              <option value="Light">Light (Handbag / Backpack)</option>
+              <option value="Medium">Medium (1 Trolley + 1 Backpack)</option>
+              <option value="Heavy">Heavy (Multiple large suitcases)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editFlightTrain">✈️/🚆 Flight/Train No.</label>
+            <input type="text" id="editFlightTrain" class="form-input" placeholder="e.g. 6E 204">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="editNotes">📝 Additional Notes</label>
+            <textarea id="editNotes" class="form-textarea" placeholder="Update your travel notes..."></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" onclick="closeEditRideModal()">Cancel</button>
+          <button type="submit" class="btn btn-accent">💾 Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Google Sheets Cloud Sync Modal -->
+  <div id="sheetsSyncModal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📊</span> Google Sheets Cloud Sync (Live Excel)
+        </div>
+        <button class="modal-close" onclick="closeSheetsSyncModal()">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.25rem;">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Connect your free Google Sheet to synchronize rides and student registrations in real time across all laptops and mobile phones on Netlify.
+        </p>
+
+        <div id="syncStatusCard" style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
+            <span>Current Status:</span>
+            <span id="syncCurrentStatusBadge" style="background: #E2E8F0; color: #475569; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">Checking...</span>
+          </div>
+        </div>
+
+        <label class="form-label" for="sheetsUrlInput">🔗 Google Apps Script Web App URL</label>
+        <input type="url" id="sheetsUrlInput" class="form-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+        <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.35rem;">
+          Obtained from your Google Sheet ➔ Extensions ➔ Apps Script ➔ Deploy ➔ Web App.
+        </span>
+      </div>
+
+      <div style="background: var(--info-bg); border-left: 3px solid var(--info); padding: 0.75rem 1rem; border-radius: 4px; font-size: 0.85rem; margin-bottom: 1rem; color: #1E3A8A;">
+        💡 <strong>Quick Setup:</strong> Check the included <a href="#" onclick="alert('See GOOGLE_SHEETS_SETUP.md in your project root for full 3-step instructions!'); return false;" style="color: var(--primary); text-decoration: underline;">GOOGLE_SHEETS_SETUP.md</a> for complete instructions.
+      </div>
+
+      <!-- Database Performance & Archiving (Admin Only) -->
+      <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">⚡ Database Speed Optimization</span>
+          <button type="button" class="btn btn-outline btn-sm" id="archivePastRidesBtn" onclick="handleTriggerArchive()">
+            🧹 Archive Past Rides
+          </button>
+        </div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">
+          Moves completed &amp; past rides older than 3 days to the <code>Archived_Rides</code> sheet to keep active queries lean and ultra-fast. Runs automatically every night at 3:00 AM.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn btn-outline btn-sm" onclick="clearSheetsSync()" style="color: var(--danger); border-color: var(--danger);">
+          Disconnect / Reset
+        </button>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeSheetsSyncModal()">Close</button>
+          <button type="button" class="btn btn-accent" id="saveSheetsUrlBtn" onclick="saveSheetsSync()">💾 Connect & Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  
+  
+  
+  <!-- Inlined App Scripts for 100% Guaranteed Execution on any CDN / Netlify -->
+  <script>
+  // Global Configuration for GLIM Cab Share
+window.CAB_CONFIG = {
+  // Google Spreadsheet Link
+  SHEET_DOCUMENT_URL: 'https://docs.google.com/spreadsheets/d/1WQt4lh38aL9dmydk-wnLuAox6LMD6YxQKc80qeEZ0cw/edit',
+  
+  // Google Apps Script Web App Deployment URL
+  GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbzTpM4wHn5S0ywToS0pTLbmTRyQQdrW9Qs25qZpSyfvtGZfGXIT4tPVzOYoS2LakzCVkA/exec'
+};
+
+  </script>
+  <script>
+  // API Client with Live Server, Google Sheets Cloud Sync + Standalone Fallback
+const API = {
+  baseURL: window.CAB_API_URL || '/api',
+  
+  // Google Sheets Cloud Sync URL
+  getSheetsUrl() {
+    return window.CAB_CONFIG?.GOOGLE_SHEETS_URL || window.CAB_SHEETS_URL || localStorage.getItem('glim_sheets_url') || '';
+  },
+
+  setSheetsUrl(url) {
+    if (url && url.trim()) {
+      localStorage.setItem('glim_sheets_url', url.trim());
+    } else {
+      localStorage.removeItem('glim_sheets_url');
+    }
+  },
+
+  isCloudSyncActive() {
+    return Boolean(this.getSheetsUrl());
+  },
+
+  // Main request dispatcher
+  async request(endpoint, options = {}) {
+    const sheetsUrl = this.getSheetsUrl();
+
+    // If Google Sheets Cloud Sync is configured, route all requests directly to Google Apps Script
+    if (sheetsUrl) {
+      try {
+        return await this._gasRouter(endpoint, options, sheetsUrl);
+      } catch (gasErr) {
+        console.warn('Google Sheets API request failed, checking fallback:', gasErr);
+        // If Google Apps Script network fails, fall back to offline storage
+        return this._fallbackHandler(endpoint, options);
+      }
+    }
+
+    const url = `${this.baseURL}${endpoint}`;
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+      },
+      ...options
+    };
+
+    try {
+      const res = await fetch(url, config);
+      
+      // If deployed as static-only (e.g. Netlify Drop) where /api gives 404 HTML, switch to offline fallback
+      const contentType = res.headers.get('content-type') || '';
+      if (!res.ok && (!contentType.includes('application/json') || res.status === 404)) {
+        console.warn(`API endpoint ${endpoint} not found on server. Using client-side storage mode.`);
+        return this._fallbackHandler(endpoint, options);
+      }
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'API Request failed');
+      }
+      return data;
+    } catch (err) {
+      console.warn(`Network error on ${endpoint}. Engaging fallback handler:`, err.message);
+      return this._fallbackHandler(endpoint, options);
+    }
+  },
+
+  // Route requests to Google Apps Script Web App
+  async _gasRouter(endpoint, options = {}, gasUrl) {
+    const urlParts = endpoint.split('?');
+    const path = urlParts[0];
+    const queryParams = new URLSearchParams(urlParts[1] || '');
+    const method = (options.method || 'GET').toUpperCase();
+    const body = options.body ? JSON.parse(options.body) : {};
+
+    // 1. Send OTP
+    if (path === '/auth/send-otp') {
+      return this._gasFetch(gasUrl, 'POST', { action: 'sendOtp', ...body });
+    }
+
+    // 2. Verify OTP
+    if (path === '/auth/verify-otp') {
+      return this._gasFetch(gasUrl, 'POST', { action: 'verifyOtp', ...body });
+    }
+
+    // 3. Login
+    if (path === '/auth/login') {
+      return this._gasFetch(gasUrl, 'POST', { action: 'login', ...body });
+    }
+
+    // 4. Get Student
+    if (path.startsWith('/auth/student/')) {
+      const roll = decodeURIComponent(path.split('/')[3]);
+      return this._gasFetch(gasUrl, 'GET', { action: 'getStudent', roll_number: roll });
+    }
+
+    // 5. Search Rides
+    if (path === '/rides/search') {
+      const p = Object.fromEntries(queryParams.entries());
+      const res = await this._gasFetch(gasUrl, 'GET', { action: 'search', ...p });
+      
+      // Format to match app.js expectation
+      return {
+        success: true,
+        exact_matches_count: res.totalExact || 0,
+        exact_matches: (res.exactMatches || []).map(r => this._normalizeRide(r, p.travel_date, p.travel_time)),
+        same_day_matches_count: res.totalOther || 0,
+        same_day_matches: (res.otherOptions || []).map(r => this._normalizeRide(r, p.travel_date, p.travel_time))
+      };
+    }
+
+    // 6. Public Pool
+    if (path === '/rides/pool') {
+      const p = Object.fromEntries(queryParams.entries());
+      const res = await this._gasFetch(gasUrl, 'GET', { action: 'pool', ...p });
+      return {
+        success: true,
+        count: res.count || 0,
+        posts: (res.rides || []).map(r => this._normalizeRide(r))
+      };
+    }
+
+    // 7. Create Ride
+    if (path === '/rides' && method === 'POST') {
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'createRide', ...body });
+      return { success: true, message: res.message || 'Ride posted!', ride: res.ride };
+    }
+
+    // 8. Get Single Ride
+    if (path.startsWith('/rides/') && method === 'GET' && !path.includes('/student/') && !path.includes('/seats') && !path.includes('/status')) {
+      const rideId = path.split('/')[2];
+      const res = await this._gasFetch(gasUrl, 'GET', { action: 'getRide', id: rideId });
+      const rawRide = res.ride || res;
+      return { success: true, ride: rawRide ? this._normalizeRide(rawRide) : null };
+    }
+
+    // 9. Update Seats
+    if (path.includes('/seats')) {
+      const rideId = path.split('/')[2];
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'updateSeats', ride_id: rideId, ...body });
+      return { success: true, message: 'Seats updated!', ...res };
+    }
+
+    // 10. Update Ride details
+    if (path.startsWith('/rides/') && method === 'PUT') {
+      const rideId = path.split('/')[2];
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'updateRide', id: rideId, ...body });
+      return { success: true, message: res.message || 'Ride updated!' };
+    }
+
+    // 11. Update Status
+    if (path.includes('/status')) {
+      const rideId = path.split('/')[2];
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'updateStatus', id: rideId, ...body });
+      return { success: true, message: res.message || 'Status updated!' };
+    }
+
+    // 12. Delete Ride
+    if (path.startsWith('/rides/') && method === 'DELETE') {
+      const rideId = path.split('/')[2];
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'deleteRide', id: rideId, ...body });
+      return { success: true, message: res.message || 'Ride deleted!' };
+    }
+
+    // 13. My Rides
+    if (path.startsWith('/rides/student/')) {
+      const studentId = path.split('/')[3];
+      const res = await this._gasFetch(gasUrl, 'GET', { action: 'myRides', student_id: studentId });
+      return {
+        success: true,
+        rides: [...(res.activeRides || []), ...(res.pastRides || [])].map(r => this._normalizeRide(r)),
+        active_rides: (res.activeRides || []).map(r => this._normalizeRide(r)),
+        past_rides: (res.pastRides || []).map(r => this._normalizeRide(r))
+      };
+    }
+
+    // 14. Stats
+    if (path === '/stats') {
+      const stats = await this._gasFetch(gasUrl, 'GET', { action: 'stats' });
+      return {
+        success: true,
+        stats: {
+          totalStudents: stats.total_students || 0,
+          activeRides: stats.active_rides || 0,
+          matchedRides: stats.matched_rides || 0,
+          popularDestinations: []
+        }
+      };
+    }
+
+    // 15. Archive Past Rides (Admin)
+    if (path === '/admin/archive-past-rides') {
+      const days = body.days || 3;
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'archivePastRides', days });
+      return { success: true, ...res };
+    }
+
+    // 16. Setup Archive Trigger (Admin)
+    if (path === '/admin/setup-archive-trigger') {
+      const res = await this._gasFetch(gasUrl, 'POST', { action: 'setupArchiveTrigger' });
+      return { success: true, ...res };
+    }
+
+    return { success: true };
+  },
+
+  async _gasFetch(gasUrl, method, payload) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s safety timeout
+
+    try {
+      if (method === 'GET') {
+        const query = new URLSearchParams(payload).toString();
+        const res = await fetch(`${gasUrl}?${query}`, { 
+          method: 'GET',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await res.json();
+        if (data && data.error) {
+          throw new Error(data.error);
+        }
+        
+        // Cache stats and pool responses for instant rendering
+        if (payload.action === 'stats') {
+          this._setStorage('cached_stats', data);
+        } else if (payload.action === 'pool') {
+          this._setStorage('cached_pool', data);
+        }
+        
+        return data;
+      } else {
+        // POST: Use text/plain header to avoid CORS preflight options blocking on Google Apps Script
+        const res = await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await res.json();
+        if (data && data.error) {
+          throw new Error(data.error);
+        }
+        return data;
+      }
+    } catch (err) {
+      clearTimeout(timeoutId);
+      console.warn('Google Sheets network request failed or timed out:', err.message);
+      
+      // Serve cached version if available for GET
+      if (method === 'GET' && payload.action === 'stats') {
+        const cached = this._getStorage('cached_stats', null);
+        if (cached) return cached;
+      }
+      if (method === 'GET' && payload.action === 'pool') {
+        const cached = this._getStorage('cached_pool', null);
+        if (cached) return cached;
+      }
+      
+      throw err;
+    }
+  },
+
+  _normalizeRide(r, targetDate, targetTime) {
+    const total = Number(r.total_seats) || 3;
+    const filled = Number(r.filled_seats) || 0;
+    let diffMinutes = 0;
+    let diffLabel = '';
+
+    let dateStr = String(r.travel_date || '').trim();
+    if (dateStr.includes('T')) dateStr = dateStr.split('T')[0];
+    if (dateStr.includes('GMT') || (dateStr.includes(' ') && !dateStr.match(/^\d{4}-\d{2}-\d{2}$/))) {
+      try {
+        const d = new Date(dateStr);
+        if (!isNaN(d.getTime())) {
+          const y = d.getFullYear();
+          const m = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          dateStr = `${y}-${m}-${day}`;
+        }
+      } catch (e) {}
+    }
+
+    let timeStr = String(r.travel_time || '').trim();
+    const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})/);
+    if (timeMatch) {
+      timeStr = `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`;
+    }
+
+    const rollStr = String(r.roll_number || '').toUpperCase();
+    const phoneStr = String(r.phone_number || r.whatsapp_number || '');
+    const nameStr = String(r.full_name || r.student_name || 'GLIM Student');
+    const statusStr = String(r.status || 'ACTIVE').toUpperCase();
+
+    if (targetDate && targetTime && r.travel_timestamp) {
+      const [th, tm] = String(targetTime).split(':').map(Number);
+      const [ty, tmo, td] = String(targetDate).split('-').map(Number);
+      const targetTs = Math.floor(new Date(ty, tmo - 1, td, th, tm, 0).getTime() / 1000);
+      diffMinutes = Math.round((Number(r.travel_timestamp) - targetTs) / 60);
+      diffLabel = diffMinutes === 0 ? 'Exact same time' : `${Math.abs(diffMinutes)} mins ${diffMinutes > 0 ? 'after' : 'before'} your time`;
+    }
+
+    return {
+      ...r,
+      student_name: nameStr,
+      roll_number: rollStr,
+      phone_number: phoneStr,
+      whatsapp_number: phoneStr,
+      origin: String(r.origin || 'GLIM Campus (Manamai)'),
+      destination: String(r.destination || ''),
+      travel_date: dateStr,
+      travel_time: timeStr,
+      status: statusStr,
+      notes: String(r.notes || ''),
+      cohort: rollStr.startsWith('FT') ? 'FT Batch' : (rollStr.startsWith('DM') ? 'DM Batch' : 'GLIM'),
+      total_seats: total,
+      filled_seats: filled,
+      remaining_seats: Math.max(0, total - filled),
+      is_full: total <= filled,
+      diff_minutes: diffMinutes,
+      diff_label: diffLabel
+    };
+  },
+
+  // Auth & WhatsApp OTP
+  sendOtp(phoneNumber, rollNumber) {
+    return this.request('/auth/send-otp', {
+      method: 'POST',
+      body: JSON.stringify({ phone_number: phoneNumber, roll_number: rollNumber })
+    });
+  },
+
+  verifyOtp(phoneNumber, otpCode, rollNumber, fullName) {
+    return this.request('/auth/verify-otp', {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: phoneNumber,
+        otp_code: otpCode,
+        roll_number: rollNumber,
+        full_name: fullName
+      })
+    });
+  },
+
+  login(studentData) {
+    return this.request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(studentData)
+    });
+  },
+
+  getStudent(rollNumber) {
+    return this.request(`/auth/student/${encodeURIComponent(rollNumber)}`);
+  },
+
+  // Rides & Seats
+  searchRides(params) {
+    const query = new URLSearchParams(params).toString();
+    return this.request(`/rides/search?${query}`);
+  },
+
+  getPublicPool(params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return this.request(`/rides/pool?${query}`);
+  },
+
+  createRide(rideData) {
+    return this.request('/rides', {
+      method: 'POST',
+      body: JSON.stringify(rideData)
+    });
+  },
+
+  getRide(rideId) {
+    return this.request(`/rides/${encodeURIComponent(rideId)}`);
+  },
+
+  updateRide(rideId, rideData) {
+    return this.request(`/rides/${encodeURIComponent(rideId)}`, {
+      method: 'PUT',
+      body: JSON.stringify(rideData)
+    });
+  },
+
+  updateSeats(rideId, payload) {
+    return this.request(`/rides/${encodeURIComponent(rideId)}/seats`, {
+      method: 'PATCH',
+      body: JSON.stringify(payload)
+    });
+  },
+
+  getMyRides(studentId) {
+    return this.request(`/rides/student/${encodeURIComponent(studentId)}`);
+  },
+
+  updateRideStatus(rideId, status, studentId) {
+    return this.request(`/rides/${encodeURIComponent(rideId)}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status, student_id: studentId })
+    });
+  },
+
+  deleteRide(rideId, studentId) {
+    return this.request(`/rides/${encodeURIComponent(rideId)}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ student_id: studentId })
+    });
+  },
+
+  getCampusStats() {
+    return this.request('/stats');
+  },
+
+  archivePastRides(days = 3) {
+    return this.request('/admin/archive-past-rides', {
+      method: 'POST',
+      body: JSON.stringify({ days })
+    });
+  },
+
+  setupArchiveTrigger() {
+    return this.request('/admin/setup-archive-trigger', {
+      method: 'POST'
+    });
+  },
+
+  // --- Client-side fallback handler for pure static Netlify hosting ---
+  _getStorage(key, defaultVal = []) {
+    try {
+      const data = localStorage.getItem(`glim_static_${key}`);
+      return data ? JSON.parse(data) : defaultVal;
+    } catch (e) {
+      return defaultVal;
+    }
+  },
+
+  _setStorage(key, val) {
+    try {
+      localStorage.setItem(`glim_static_${key}`, JSON.stringify(val));
+    } catch (e) {}
+  },
+
+  _fallbackHandler(endpoint, options = {}) {
+    const urlParts = endpoint.split('?');
+    const path = urlParts[0];
+    const queryParams = new URLSearchParams(urlParts[1] || '');
+    const method = (options.method || 'GET').toUpperCase();
+    const body = options.body ? JSON.parse(options.body) : {};
+
+    const currentUnix = Math.floor(Date.now() / 1000);
+
+    // 1. Send OTP
+    if (path === '/auth/send-otp') {
+      const devOtp = '123456';
+      return {
+        success: true,
+        message: `WhatsApp OTP sent to +91 ${String(body.phone_number).slice(-10)}`,
+        dev_otp: devOtp
+      };
+    }
+
+    // 2. Verify OTP / Login
+    if (path === '/auth/verify-otp' || path === '/auth/login') {
+      const students = this._getStorage('students', []);
+      let roll = (body.roll_number || 'FT24001').toUpperCase();
+      let student = students.find(s => s.roll_number === roll);
+      
+      if (!student) {
+        student = {
+          id: 'stud_' + Date.now(),
+          roll_number: roll,
+          full_name: body.full_name || 'GLIM Student',
+          phone_number: body.phone_number || '9876543210',
+          whatsapp_number: body.phone_number || '9876543210',
+          cohort: roll.startsWith('FT') ? 'FT Batch' : (roll.startsWith('DM') ? 'DM Batch' : 'GLIM'),
+          is_admin: roll === 'FT271049',
+          role: roll === 'FT271049' ? 'ADMIN' : 'STUDENT'
+        };
+        students.push(student);
+        this._setStorage('students', students);
+      }
+      return { success: true, student };
+    }
+
+    // 3. Search Rides
+    if (path === '/rides/search') {
+      const origin = queryParams.get('origin') || 'GLIM Campus (Manamai)';
+      const destination = queryParams.get('destination');
+      const travelDate = queryParams.get('travel_date');
+      const travelTime = queryParams.get('travel_time');
+      const currentStudentId = queryParams.get('current_student_id');
+
+      const allRides = this._getStorage('rides', []);
+      const [sh, sm] = (travelTime || '12:00').split(':').map(Number);
+      const [sy, smo, sd] = (travelDate || '2026-10-15').split('-').map(Number);
+      const searchTimestamp = Math.floor(new Date(sy, smo - 1, sd, sh, sm, 0).getTime() / 1000);
+
+      const activeUpcoming = allRides.filter(r => 
+        r.status === 'ACTIVE' && 
+        r.destination === destination && 
+        r.travel_date === travelDate && 
+        r.student_id !== currentStudentId &&
+        r.travel_timestamp >= (currentUnix - 1800)
+      );
+
+      const exact = [];
+      const sameDay = [];
+
+      activeUpcoming.forEach(r => {
+        const diffMinutes = Math.round((r.travel_timestamp - searchTimestamp) / 60);
+        const total = r.total_seats || r.seats_count || 1;
+        const filled = r.filled_seats || 0;
+        const item = {
+          ...r,
+          diff_minutes: diffMinutes,
+          diff_label: diffMinutes === 0 ? 'Exact same time' : `${Math.abs(diffMinutes)} mins ${diffMinutes > 0 ? 'after' : 'before'} your time`,
+          total_seats: total,
+          filled_seats: filled,
+          remaining_seats: Math.max(0, total - filled),
+          is_full: total <= filled
+        };
+
+        if (Math.abs(diffMinutes) <= 60) {
+          exact.push({ ...item, is_exact_window: true });
+        } else {
+          sameDay.push({ ...item, is_exact_window: false });
+        }
+      });
+
+      return {
+        success: true,
+        exact_matches_count: exact.length,
+        exact_matches: exact,
+        same_day_matches_count: sameDay.length,
+        same_day_matches: sameDay
+      };
+    }
+
+    // 4. Public Pool
+    if (path === '/rides/pool') {
+      const allRides = this._getStorage('rides', []);
+      const dest = queryParams.get('destination');
+      const date = queryParams.get('date');
+
+      let filtered = allRides.filter(r => r.status === 'ACTIVE' && r.travel_timestamp >= (currentUnix - 1800));
+      if (dest && dest !== 'ALL') filtered = filtered.filter(r => r.destination === dest);
+      if (date) filtered = filtered.filter(r => r.travel_date === date);
+
+      return {
+        success: true,
+        count: filtered.length,
+        posts: filtered.map(r => {
+          const total = r.total_seats || r.seats_count || 1;
+          const filled = r.filled_seats || 0;
+          return {
+            ...r,
+            total_seats: total,
+            filled_seats: filled,
+            remaining_seats: Math.max(0, total - filled),
+            is_full: total <= filled
+          };
+        })
+      };
+    }
+
+    // 5. Create Ride
+    if (path === '/rides' && method === 'POST') {
+      const allRides = this._getStorage('rides', []);
+      const [h, m] = (body.travel_time || '12:00').split(':').map(Number);
+      const [y, mo, d] = (body.travel_date || '2026-10-15').split('-').map(Number);
+      const timestamp = Math.floor(new Date(y, mo - 1, d, h, m, 0).getTime() / 1000);
+
+      const total = Number(body.total_seats || body.seats_count) || 3;
+      const filled = Number(body.filled_seats) || 1;
+      const newRide = {
+        id: 'ride_' + Date.now(),
+        student_id: body.student_id || 'stud_demo',
+        student_name: body.student_profile?.full_name || 'GLIM Student',
+        roll_number: body.student_profile?.roll_number || 'FT24102',
+        phone_number: body.student_profile?.phone_number || '9876543210',
+        whatsapp_number: body.student_profile?.phone_number || '9876543210',
+        cohort: body.student_profile?.cohort || 'GLIM',
+        origin: body.origin || 'GLIM Campus (Manamai)',
+        destination: body.destination,
+        travel_date: body.travel_date,
+        travel_time: body.travel_time,
+        travel_timestamp: timestamp,
+        ride_type: body.ride_type || 'LOOKING_FOR_CAB',
+        seats_count: total,
+        total_seats: total,
+        filled_seats: filled,
+        luggage_size: body.luggage_size || 'Medium',
+        flight_train_no: body.flight_train_no || '',
+        notes: body.notes || '',
+        status: 'ACTIVE',
+        created_at: new Date().toISOString()
+      };
+
+      allRides.unshift(newRide);
+      this._setStorage('rides', allRides);
+      return { success: true, message: 'Ride posted!', ride: newRide };
+    }
+
+    // 6. Get My Rides
+    if (path.startsWith('/rides/student/')) {
+      const studentId = path.split('/')[3];
+      const allRides = this._getStorage('rides', []);
+      const myRides = allRides.filter(r => r.student_id === studentId);
+      
+      const active = myRides.filter(r => r.status === 'ACTIVE' && r.travel_timestamp >= (currentUnix - 1800));
+      const past = myRides.filter(r => r.status !== 'ACTIVE' || r.travel_timestamp < (currentUnix - 1800));
+
+      return {
+        success: true,
+        rides: myRides,
+        active_rides: active,
+        past_rides: past
+      };
+    }
+
+    // 7. Update Seats
+    if (path.includes('/seats')) {
+      const rideId = path.split('/')[2];
+      const allRides = this._getStorage('rides', []);
+      const ride = allRides.find(r => r.id === rideId);
+      if (ride) {
+        const total = ride.total_seats || 3;
+        if (body.delta !== undefined) {
+          ride.filled_seats = Math.max(1, Math.min(total, (ride.filled_seats || 1) + body.delta));
+        }
+        this._setStorage('rides', allRides);
+        return { success: true, message: 'Seats updated!', ride };
+      }
+    }
+
+    // 8. Update Status / Delete
+    if (path.includes('/status')) {
+      const rideId = path.split('/')[2];
+      const allRides = this._getStorage('rides', []);
+      const ride = allRides.find(r => r.id === rideId);
+      if (ride) {
+        ride.status = body.status;
+        this._setStorage('rides', allRides);
+        return { success: true, message: 'Status updated!', ride };
+      }
+    }
+
+    if (method === 'DELETE') {
+      const rideId = path.split('/')[2];
+      let allRides = this._getStorage('rides', []);
+      allRides = allRides.filter(r => r.id !== rideId);
+      this._setStorage('rides', allRides);
+      return { success: true, message: 'Ride deleted successfully' };
+    }
+
+    // Stats
+    if (path === '/stats') {
+      const allRides = this._getStorage('rides', []);
+      const active = allRides.filter(r => r.status === 'ACTIVE').length;
+      return {
+        success: true,
+        stats: {
+          totalStudents: 1,
+          activeRides: active,
+          matchedRides: 0,
+          popularDestinations: []
+        }
+      };
+    }
+
+    return { success: true };
+  }
+};
+
+  </script>
+  <script>
+  // Application State
+const State = {
+  currentStudent: null,
+  activeTab: 'search',
+  dashboardView: 'active', // 'active' | 'past'
+  lastSearchParams: null,
+  pendingRidePost: null,
+  tempAuthData: null
+};
+
+// GLIM Preset Destinations
+const PRESET_DESTINATIONS = [
+  'Chennai Airport (MAA) - Domestic',
+  'Chennai Airport (MAA) - International',
+  'Chennai Central Railway Station (MAS)',
+  'Chennai Egmore Railway Station (MS)',
+  'Tambaram Railway Station / Bus Stand',
+  'CMBT / Kilambakkam (KCBT) Bus Terminus',
+  'GLIM Campus (Manamai) - Return to Campus',
+  'Other / Custom Chennai Location'
+];
+
+// Initialize on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+  initUserSession();
+  initEventListeners();
+  checkSyncStatus();
+  loadCampusStats();
+  setDefaultDates();
+  
+  // Set default view
+  switchTab('search');
+});
+
+// 1. Session & Auth Management
+async function initUserSession() {
+  const saved = localStorage.getItem('glim_cab_user');
+  if (saved) {
+    try {
+      State.currentStudent = JSON.parse(saved);
+      updateUserUI();
+
+      // Background re-sync with server to ensure profile exists in DB
+      if (State.currentStudent.roll_number && State.currentStudent.phone_number) {
+        API.login({
+          roll_number: State.currentStudent.roll_number,
+          full_name: State.currentStudent.full_name || 'GLIM Student',
+          phone_number: State.currentStudent.phone_number,
+          whatsapp_number: State.currentStudent.whatsapp_number || State.currentStudent.phone_number,
+          cohort: State.currentStudent.cohort
+        }).then(res => {
+          if (res.student) {
+            State.currentStudent = res.student;
+            localStorage.setItem('glim_cab_user', JSON.stringify(res.student));
+            updateUserUI();
+          }
+        }).catch(err => {
+          console.warn('Session sync note:', err);
+        });
+      }
+    } catch (e) {
+      localStorage.removeItem('glim_cab_user');
+    }
+  }
+
+  // Prompt student to log in if no active session
+  if (!State.currentStudent || !State.currentStudent.roll_number) {
+    setTimeout(() => {
+      openLoginModal();
+    }, 200);
+  }
+}
+
+function updateUserUI() {
+  const container = document.getElementById('userProfileContainer');
+  const sheetsBtn = document.getElementById('sheetsSyncBtn');
+
+  if (!State.currentStudent) {
+    if (sheetsBtn) sheetsBtn.style.display = 'none';
+    container.innerHTML = `
+      <button class="btn btn-accent btn-sm" onclick="openLoginModal()">
+        <span>👤</span> Student Login
+      </button>
+    `;
+    return;
+  }
+
+  const isAdmin = (State.currentStudent.is_admin || State.currentStudent.roll_number === 'FT271049');
+  
+  // Show Cloud Sync button ONLY for Admin FT271049
+  if (sheetsBtn) {
+    sheetsBtn.style.display = isAdmin ? 'inline-flex' : 'none';
+  }
+
+  const initials = (State.currentStudent.full_name || 'GL')
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .substring(0, 2)
+    .toUpperCase();
+
+  container.innerHTML = `
+    <div class="user-profile-header">
+      <div class="user-avatar" style="${isAdmin ? 'background: var(--glim-gold); color: #000;' : ''}">${initials}</div>
+      <div class="user-info-text">
+        <span class="user-info-name">
+          ${escapeHTML(State.currentStudent.full_name)}
+          ${isAdmin ? '<span style="background: var(--glim-gold); color: #000; font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.3rem;">👑 ADMIN</span>' : ''}
+        </span>
+        <span class="user-info-roll">${escapeHTML(State.currentStudent.roll_number)} • ${escapeHTML(State.currentStudent.cohort || 'GLIM')}</span>
+      </div>
+      <button class="btn-switch-user" onclick="openLoginModal()" title="Switch Account">Switch</button>
+    </div>
+  `;
+}
+
+function openLoginModal() {
+  const modal = document.getElementById('loginModal');
+  if (!modal) return;
+
+  if (State.currentStudent) {
+    const rollEl = document.getElementById('loginRoll');
+    const nameEl = document.getElementById('loginName');
+    const phoneEl = document.getElementById('loginPhone');
+    if (rollEl) rollEl.value = State.currentStudent.roll_number || '';
+    if (nameEl) nameEl.value = State.currentStudent.full_name || '';
+    if (phoneEl) phoneEl.value = State.currentStudent.phone_number || '';
+  }
+  
+  modal.classList.add('active');
+  modal.style.display = 'flex';
+  modal.style.opacity = '1';
+  modal.style.visibility = 'visible';
+  modal.style.pointerEvents = 'auto';
+
+  const rollInput = document.getElementById('loginRoll');
+  if (rollInput) {
+    setTimeout(() => rollInput.focus(), 50);
+  }
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById('loginModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  modal.style.display = 'none';
+  modal.style.opacity = '0';
+  modal.style.visibility = 'hidden';
+  modal.style.pointerEvents = 'none';
+}
+
+// Direct Student Login (No OTP required)
+async function handleDirectLogin(e) {
+  e.preventDefault();
+  const roll = document.getElementById('loginRoll').value.trim().toUpperCase();
+  const name = document.getElementById('loginName').value.trim();
+  const phone = document.getElementById('loginPhone').value.trim().replace(/\D/g, '');
+
+  if (!roll || !name || !phone || phone.length < 10) {
+    showToast('Please enter a valid Roll Number, Full Name, and 10-digit WhatsApp Number', 'warning');
+    return;
+  }
+
+  const btn = document.getElementById('btnLoginSubmit');
+  btn.disabled = true;
+  btn.innerHTML = '<span>⏳</span> Logging in...';
+
+  try {
+    const res = await API.login({
+      roll_number: roll,
+      full_name: name,
+      phone_number: phone,
+      whatsapp_number: phone,
+      cohort: roll.startsWith('FT') ? 'FT Batch' : (roll.startsWith('DM') ? 'DM Batch' : 'GLIM')
+    });
+
+    State.currentStudent = res.student;
+    localStorage.setItem('glim_cab_user', JSON.stringify(res.student));
+    updateUserUI();
+    closeLoginModal();
+    showToast(`Welcome, ${res.student.full_name}! 👋 Logged in successfully.`, 'success');
+
+    if (State.pendingRidePost) {
+      const pending = State.pendingRidePost;
+      State.pendingRidePost = null;
+      submitRidePostData(pending);
+      return;
+    }
+
+    if (State.activeTab === 'dashboard') {
+      loadMyRides();
+    }
+    loadCampusStats();
+  } catch (err) {
+    showToast(err.message || 'Login failed. Please try again.', 'danger');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🚀 Login & Continue';
+  }
+}
+
+
+
+// 2. Tab Navigation
+function switchTab(tabId) {
+  State.activeTab = tabId;
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabId);
+  });
+
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.style.display = panel.id === `panel-${tabId}` ? 'block' : 'none';
+  });
+
+  if (tabId === 'pool') {
+    loadPublicPool();
+  } else if (tabId === 'dashboard') {
+    if (!State.currentStudent) {
+      openLoginModal();
+      showToast('Please log in to view your dashboard and manage rides', 'info');
+    }
+    loadMyRides();
+  } else if (tabId === 'post') {
+    if (!State.currentStudent) {
+      openLoginModal();
+      showToast('Please log in with your GLIM Roll Number to post a ride', 'info');
+    }
+  }
+}
+
+// 3. Date & Time Defaults
+function setDefaultDates() {
+  const today = new Date();
+  const dateStr = today.toISOString().split('T')[0];
+  
+  const searchDate = document.getElementById('searchDate');
+  const postDate = document.getElementById('postDate');
+
+  if (searchDate) {
+    searchDate.min = dateStr;
+    searchDate.value = dateStr;
+  }
+  if (postDate) {
+    postDate.min = dateStr;
+    postDate.value = dateStr;
+  }
+
+  const nextHour = (today.getHours() + 1) % 24;
+  const formattedHour = String(nextHour).padStart(2, '0') + ':00';
+  
+  const searchTime = document.getElementById('searchTime');
+  const postTime = document.getElementById('postTime');
+  if (searchTime && !searchTime.value) searchTime.value = formattedHour;
+  if (postTime && !postTime.value) postTime.value = formattedHour;
+}
+
+// 4. Search & Matching Logic (±1 Hour Window, Auto-filters past rides & matches Origin + Destination)
+async function handleSearchRides(e) {
+  if (e) e.preventDefault();
+
+  const origin = document.getElementById('searchOrigin') ? document.getElementById('searchOrigin').value : 'GLIM Campus (Manamai)';
+  const destination = document.getElementById('searchDestination').value;
+  const date = document.getElementById('searchDate').value;
+  const time = document.getElementById('searchTime').value;
+
+  if (!destination || !date || !time) {
+    showToast('Please select destination, date and time', 'warning');
+    return;
+  }
+
+  State.lastSearchParams = { origin, destination, date, time };
+
+  const resultsContainer = document.getElementById('searchResultsSection');
+  resultsContainer.innerHTML = `
+    <div class="card" style="text-align:center; padding: 2.5rem;">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔍 Searching for GLIM buddies...</div>
+      <p style="color: var(--text-muted);">Finding students traveling from <strong>${escapeHTML(origin)}</strong> to <strong>${escapeHTML(destination)}</strong> on <strong>${date}</strong> around <strong>${time}</strong> (±1 hr window)</p>
+    </div>
+  `;
+
+  try {
+    const res = await API.searchRides({
+      origin,
+      destination,
+      travel_date: date,
+      travel_time: time,
+      current_student_id: State.currentStudent ? State.currentStudent.id : ''
+    });
+
+    renderSearchResults(res, { origin, destination, date, time });
+  } catch (err) {
+    resultsContainer.innerHTML = `
+      <div class="card" style="text-align: center; color: var(--danger); padding: 2rem;">
+        <h3>Error Searching Rides</h3>
+        <p>${escapeHTML(err.message)}</p>
+      </div>
+    `;
+  }
+}
+
+function renderSearchResults(data, searchCriteria) {
+  const container = document.getElementById('searchResultsSection');
+  const exactMatches = data.exact_matches || [];
+  const sameDayMatches = data.same_day_matches || [];
+
+  let html = `
+    <div class="card" style="background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);">
+      <div class="card-header">
+        <div class="card-title">
+          <span>🎯</span> Results: ${escapeHTML(searchCriteria.origin)} ➔ ${escapeHTML(searchCriteria.destination)}
+        </div>
+        <span class="meta-tag" style="background: var(--primary); color: #FFF; font-weight: 600;">
+          📅 ${searchCriteria.date} @ ${searchCriteria.time} (±1 hr window)
+        </span>
+      </div>
+  `;
+
+  // 1. EXACT ±1 HOUR MATCHES
+  if (exactMatches.length > 0) {
+    html += `
+      <div class="match-section-title">
+        <span>✨ Best Route & Timing Matches (Within ±1 Hour)</span>
+        <span class="badge" style="background: var(--accent); color: #000; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.8rem;">
+          ${exactMatches.length} ${exactMatches.length === 1 ? 'Student Match' : 'Students Match'}
+        </span>
+      </div>
+      <div class="matches-grid">
+        ${exactMatches.map(ride => renderRideCard(ride, true)).join('')}
+      </div>
+    `;
+  } else {
+    html += `
+      <div class="empty-state" style="padding: 2rem 1rem;">
+        <div class="empty-state-icon">⏰</div>
+        <h3>No exact ±1 hour match found for this route</h3>
+        <p>No student has posted from ${escapeHTML(searchCriteria.origin)} to ${escapeHTML(searchCriteria.destination)} within 1 hour of ${searchCriteria.time} on ${searchCriteria.date} yet.</p>
+      </div>
+    `;
+  }
+
+  // 2. SAME-DAY OTHER TIMING MATCHES
+  if (sameDayMatches.length > 0) {
+    html += `
+      <div class="match-section-title" style="margin-top: 2rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+        <span>🕒 Other Students on Same Route (${searchCriteria.date})</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">${sameDayMatches.length} available</span>
+      </div>
+      <div class="matches-grid">
+        ${sameDayMatches.map(ride => renderRideCard(ride, false)).join('')}
+      </div>
+    `;
+  }
+
+  // 3. PUBLIC POOL POST CALL-TO-ACTION
+  html += `
+      <div class="post-fallback-box">
+        <h3>🚀 None of these match your timing?</h3>
+        <p>Post your travel plan to the <strong>GLIM Public Pool</strong>. Other students will see your post and connect with you on WhatsApp!</p>
+        <button class="btn btn-accent btn-lg" onclick="prefillAndSwitchToPost('${escapeHTML(searchCriteria.origin)}', '${escapeHTML(searchCriteria.destination)}', '${searchCriteria.date}', '${searchCriteria.time}')">
+          <span>➕</span> Post My Ride to Public Pool Now
+        </button>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function prefillAndSwitchToPost(origin, destination, date, time) {
+  if (document.getElementById('postOrigin')) document.getElementById('postOrigin').value = origin;
+  document.getElementById('postDestination').value = destination;
+  document.getElementById('postDate').value = date;
+  document.getElementById('postTime').value = time;
+  switchTab('post');
+  showToast('Trip details pre-filled for your post!', 'info');
+}
+
+// 5. Ride Card Component (With Remaining Seats Indicator)
+function renderRideCard(ride, isExactMatch) {
+  const isMine = State.currentStudent && State.currentStudent.id === ride.student_id;
+  const isCurrentUserAdmin = (State.currentStudent && (State.currentStudent.is_admin || State.currentStudent.roll_number === 'FT271049'));
+
+  const studentName = String(ride.student_name || 'GLIM Student');
+  const studentInitials = studentName
+    .split(' ')
+    .filter(Boolean)
+    .map(n => n[0] || '')
+    .join('')
+    .substring(0, 2)
+    .toUpperCase() || 'GL';
+
+  const totalSeats = Number(ride.total_seats || ride.seats_count) || 1;
+  const filledSeats = Number(ride.filled_seats) || 0;
+  const remainingSeats = Math.max(0, totalSeats - filledSeats);
+  const isFull = remainingSeats === 0;
+
+  // WhatsApp Deep Link Generator with bulletproof string casting
+  const rawNumber = String(ride.whatsapp_number || ride.phone_number || '').replace(/\D/g, '');
+  const waNumber = rawNumber.startsWith('91') && rawNumber.length > 10 ? rawNumber.slice(2) : rawNumber;
+  const waMessage = encodeURIComponent(
+    `Hi ${studentName}! 👋\nI saw your cab share post on GLIM Cab Share for *${ride.destination}* on *${ride.travel_date}* around *${ride.travel_time}*.\nAre there still seats available to share?`
+  );
+  const waUrl = `https://wa.me/91${waNumber}?text=${waMessage}`;
+
+  const isHaveCab = ride.ride_type === 'HAVE_CAB_OFFERING_SEATS';
+  const statusStr = String(ride.status || 'ACTIVE');
+
+  return `
+    <div class="ride-card ${isExactMatch ? 'exact-match' : ''}">
+      <div>
+        <div class="ride-badge-top">
+          <span class="ride-type-pill ${isHaveCab ? 'have-cab' : 'need-cab'}">
+            ${isHaveCab ? '🚖 Cab Booked (Offering Seats)' : '🙋 Seeking Cab / Co-passengers'}
+          </span>
+          
+          ${ride.diff_label ? `
+            <span class="time-diff-badge ${ride.diff_minutes === 0 ? 'exact' : ''}">
+              ⏱️ ${escapeHTML(ride.diff_label)}
+            </span>
+          ` : `
+            <span class="status-badge ${statusStr.toLowerCase()}">${escapeHTML(statusStr)}</span>
+          `}
+        </div>
+
+        <div class="student-profile-row" style="margin: 0.9rem 0;">
+          <div class="student-avatar">${studentInitials}</div>
+          <div class="student-details">
+            <h4>${escapeHTML(studentName)} ${isMine ? '<span style="font-size:0.75rem; color:var(--accent);">(You)</span>' : ''}</h4>
+            <span>🎓 ${escapeHTML(ride.roll_number || '')} • ${escapeHTML(ride.cohort || 'GLIM')}</span>
+          </div>
+        </div>
+
+        <div class="route-info">
+          <div class="route-point">
+            <span class="dot origin"></span>
+            <span><strong>From:</strong> ${escapeHTML(ride.origin || 'GLIM Campus')}</span>
+          </div>
+          <div class="route-point">
+            <span class="dot dest"></span>
+            <span><strong>To:</strong> ${escapeHTML(ride.destination)}</span>
+          </div>
+
+          <div class="route-meta-tags">
+            <span class="meta-tag">📅 ${ride.travel_date}</span>
+            <span class="meta-tag">⏰ ${ride.travel_time}</span>
+            
+            ${isHaveCab ? `
+              <span class="meta-tag" style="background: ${isFull ? 'var(--danger-bg)' : 'var(--success-bg)'}; color: ${isFull ? 'var(--danger)' : 'var(--success)'}; font-weight: 700;">
+                ${isFull ? '🔴 Cab Full (0 Seats Left)' : `🟢 ${remainingSeats} of ${totalSeats} Seats Left`}
+              </span>
+            ` : `
+              <span class="meta-tag">👥 Seeking ${totalSeats} Seat(s)</span>
+            `}
+
+            <span class="meta-tag">🧳 ${escapeHTML(ride.luggage_size || 'Medium')} Bags</span>
+            ${ride.flight_train_no ? `<span class="meta-tag flight-tag">✈️/🚆 ${escapeHTML(ride.flight_train_no)}</span>` : ''}
+          </div>
+        </div>
+
+        ${ride.notes ? `
+          <div class="ride-notes" style="margin-top: 0.75rem;">
+            "${escapeHTML(ride.notes)}"
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="card-actions" style="flex-wrap: wrap;">
+        ${!isMine ? `
+          <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="flex: 1; min-width: 160px;">
+            <span>💬</span> Connect on WhatsApp
+          </a>
+          <button class="btn btn-outline btn-sm" onclick="copyContact('${escapeHTML(ride.phone_number)}', '${escapeHTML(ride.student_name)}')" title="Copy Phone Number">
+            📞
+          </button>
+          ${isCurrentUserAdmin ? `
+            <button class="btn btn-danger-outline btn-sm" onclick="adminDeleteRide('${ride.id}', '${escapeHTML(ride.student_name)}')" title="Admin: Delete this post">
+              🛡️ Admin Delete
+            </button>
+          ` : ''}
+        ` : `
+          <button class="btn btn-accent btn-sm" style="flex: 1;" onclick="switchTab('dashboard')">
+            Manage in My Dashboard
+          </button>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+// Admin delete post handler
+async function adminDeleteRide(rideId, studentName) {
+  if (!confirm(`[Campus Admin FT271049]\n\nAre you sure you want to remove the ride post created by ${studentName}?`)) {
+    return;
+  }
+
+  try {
+    const res = await API.deleteRide(rideId, State.currentStudent.id);
+    showToast(res.message || 'Ride post deleted by Admin (FT271049)', 'info');
+
+    if (State.activeTab === 'pool') loadPublicPool();
+    if (State.activeTab === 'dashboard') loadMyRides();
+    if (State.lastSearchParams) handleSearchRides();
+    loadCampusStats();
+  } catch (err) {
+    showToast(err.message || 'Admin delete failed', 'danger');
+  }
+}
+
+// 6. Post Ride to Public Pool
+async function handleCreateRide(e) {
+  if (e) e.preventDefault();
+
+  const origin = document.getElementById('postOrigin').value;
+  const destination = document.getElementById('postDestination').value;
+  const travel_date = document.getElementById('postDate').value;
+  const travel_time = document.getElementById('postTime').value;
+  const ride_type = document.getElementById('postRideType').value;
+  const total_seats = parseInt(document.getElementById('postSeats').value, 10) || 1;
+  const luggage_size = document.getElementById('postLuggage').value;
+  const flight_train_no = document.getElementById('postFlightTrain').value;
+  const notes = document.getElementById('postNotes').value;
+
+  if (!destination || !travel_date || !travel_time) {
+    showToast('Please select destination, date and preferred time', 'warning');
+    return;
+  }
+
+  const ridePayload = {
+    origin,
+    destination,
+    travel_date,
+    travel_time,
+    ride_type,
+    seats_count: total_seats,
+    total_seats: total_seats,
+    luggage_size,
+    flight_train_no,
+    notes
+  };
+
+  if (!State.currentStudent) {
+    State.pendingRidePost = ridePayload;
+    openLoginModal();
+    showToast('Please enter your FT/DM number to publish', 'info');
+    return;
+  }
+
+  await submitRidePostData(ridePayload);
+}
+
+async function submitRidePostData(ridePayload) {
+  try {
+    const res = await API.createRide({
+      ...ridePayload,
+      student_id: State.currentStudent ? State.currentStudent.id : null,
+      student_profile: State.currentStudent
+    });
+
+    if (res.student && (!State.currentStudent || !State.currentStudent.id)) {
+      State.currentStudent = res.student;
+      localStorage.setItem('glim_cab_user', JSON.stringify(res.student));
+      updateUserUI();
+    }
+
+    showToast('🎉 Ride posted to GLIM Public Pool successfully!', 'success');
+    
+    const form = document.getElementById('postRideForm');
+    if (form) form.reset();
+    setDefaultDates();
+    loadCampusStats();
+
+    switchTab('dashboard');
+  } catch (err) {
+    console.error('Post error:', err);
+    showToast(err.message || 'Failed to post ride. Please try again.', 'danger');
+  }
+}
+
+// 7. Public Pool Feed (Explore all posts with filters)
+async function loadPublicPool() {
+  const container = document.getElementById('poolFeedContainer');
+  container.innerHTML = `<div style="text-align: center; padding: 2rem;">Loading public campus posts...</div>`;
+
+  const destFilter = document.getElementById('poolDestFilter').value;
+  const dateFilter = document.getElementById('poolDateFilter').value;
+  const typeFilter = document.getElementById('poolTypeFilter').value;
+
+  try {
+    const res = await API.getPublicPool({
+      destination: destFilter,
+      date: dateFilter,
+      ride_type: typeFilter
+    });
+
+    if (!res.posts || res.posts.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">📭</div>
+          <h3>No Upcoming Public Pool Posts Found</h3>
+          <p>Past rides are automatically filtered out. Be the first to post a new ride request!</p>
+          <button class="btn btn-primary" onclick="switchTab('post')" style="margin-top: 1rem;">
+            <span>➕</span> Post a Ride Request
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="matches-grid">
+        ${res.posts.map(p => renderRideCard(p, false)).join('')}
+      </div>
+    `;
+  } catch (err) {
+    container.innerHTML = `<div style="color: var(--danger); text-align: center;">Failed to load pool: ${escapeHTML(err.message)}</div>`;
+  }
+}
+
+// 8. Student Dashboard (My Rides with Active vs Past Separation & Seat Tracker)
+function setDashboardView(view) {
+  State.dashboardView = view;
+  document.getElementById('dashboardTabActive').className = view === 'active' ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-outline';
+  document.getElementById('dashboardTabPast').className = view === 'past' ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-outline';
+  loadMyRides();
+}
+
+async function loadMyRides() {
+  const container = document.getElementById('myRidesContainer');
+  
+  if (!State.currentStudent) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">🔒</div>
+        <h3>Login Required</h3>
+        <p>Please log in with your FT/DM number to view and manage your posted rides.</p>
+        <button class="btn btn-primary" onclick="openLoginModal()" style="margin-top: 1rem;">Student Login</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `<div style="text-align: center; padding: 2rem;">Loading your rides...</div>`;
+
+  try {
+    const res = await API.getMyRides(State.currentStudent.id);
+    State.myActiveRides = res.active_rides || [];
+    State.myPastRides = res.past_rides || [];
+    const ridesToShow = State.dashboardView === 'active' ? State.myActiveRides : State.myPastRides;
+
+    if (ridesToShow.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">${State.dashboardView === 'active' ? '🚕' : '📜'}</div>
+          <h3>${State.dashboardView === 'active' ? 'No Active & Upcoming Rides' : 'No Past Rides'}</h3>
+          <p>${State.dashboardView === 'active' ? 'You currently have no upcoming active travel posts.' : 'Completed and past expired rides will appear here.'}</p>
+          ${State.dashboardView === 'active' ? `
+            <button class="btn btn-accent" onclick="switchTab('post')" style="margin-top: 1rem;">
+              <span>➕</span> Post a New Ride
+            </button>
+          ` : ''}
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        ${ridesToShow.map(r => renderDashboardRideItem(r)).join('')}
+      </div>
+    `;
+  } catch (err) {
+    container.innerHTML = `<div style="color: var(--danger); text-align: center;">Error loading rides: ${escapeHTML(err.message)}</div>`;
+  }
+}
+
+function renderDashboardRideItem(ride) {
+  const isFound = ride.status === 'FOUND';
+  const isCancelled = ride.status === 'CANCELLED';
+  const isExpired = ride.status === 'EXPIRED';
+  const isActive = ride.status === 'ACTIVE' && !ride.is_past;
+
+  const total = Number(ride.total_seats || ride.seats_count) || 1;
+  const filled = Number(ride.filled_seats) || 0;
+  const remaining = Math.max(0, total - filled);
+  const isHaveCab = ride.ride_type === 'HAVE_CAB_OFFERING_SEATS';
+  const statusStr = String(ride.status || 'ACTIVE');
+
+  return `
+    <div class="card" style="margin-bottom: 0; border-left: 4px solid ${isActive ? 'var(--success)' : (isFound ? 'var(--info)' : 'var(--danger)')};">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div style="flex: 1; min-width: 280px;">
+          <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="status-badge ${statusStr.toLowerCase()}">${isFound ? '✅ Buddy Found' : (isExpired ? '⌛ Expired' : escapeHTML(statusStr))}</span>
+            <span class="meta-tag">📅 ${escapeHTML(String(ride.travel_date || ''))} @ ${escapeHTML(String(ride.travel_time || ''))}</span>
+            <span class="meta-tag">${isHaveCab ? '🚖 Cab Booked (Offering Seats)' : '🙋 Looking for Cab'}</span>
+          </div>
+
+          <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 0.25rem;">
+            ${escapeHTML(ride.origin || 'GLIM Campus')} ➔ ${escapeHTML(ride.destination)}
+          </h3>
+
+          <!-- Seat Progress Bar & Co-passenger Adjuster -->
+          ${isHaveCab ? `
+            <div style="background: #F8FAFC; padding: 0.6rem 0.8rem; border-radius: var(--radius-sm); margin: 0.6rem 0; border: 1px solid var(--border-color); max-width: 420px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem;">
+                <span>👥 Seat Occupancy:</span>
+                <span style="color: ${remaining === 0 ? 'var(--danger)' : 'var(--success)'};">${filled} of ${total} Filled (${remaining} Left)</span>
+              </div>
+              
+              <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.4rem;">
+                <button class="btn btn-outline btn-sm" onclick="handleAdjustSeats('${ride.id}', -1)" ${filled <= 0 ? 'disabled' : ''} title="Remove 1 Co-passenger (Freed up seat)">
+                  ➖ Free a Seat
+                </button>
+                <button class="btn btn-accent btn-sm" onclick="handleAdjustSeats('${ride.id}', 1)" ${filled >= total ? 'disabled' : ''} title="Add 1 Co-passenger who joined">
+                  ➕ Add Buddy Joined
+                </button>
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="route-meta-tags" style="margin-top: 0.5rem;">
+            <span class="meta-tag">🧳 ${escapeHTML(ride.luggage_size || 'Medium')} Bags</span>
+            ${ride.flight_train_no ? `<span class="meta-tag flight-tag">✈️/🚆 ${escapeHTML(ride.flight_train_no)}</span>` : ''}
+          </div>
+
+          ${ride.notes ? `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">"${escapeHTML(ride.notes)}"</p>` : ''}
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; min-width: 170px;">
+          <button class="btn btn-outline btn-sm" onclick="openEditRideModal('${ride.id}')" style="width: 100%;">
+            ✏️ Edit Details
+          </button>
+          ${isActive ? `
+            <button class="btn btn-accent btn-sm" onclick="updateStatus('${ride.id}', 'FOUND')" style="width: 100%;">
+              ✅ Mark Buddy Found
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="updateStatus('${ride.id}', 'CANCELLED')" style="width: 100%;">
+              ❌ Cancel Post
+            </button>
+          ` : `
+            <button class="btn btn-outline btn-sm" onclick="updateStatus('${ride.id}', 'ACTIVE')" style="width: 100%;">
+              🔄 Reactivate Post
+            </button>
+          `}
+          <button class="btn btn-danger-outline btn-sm" onclick="deleteRidePost('${ride.id}')" style="margin-top: 0.25rem; width: 100%;">
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Adjust seats increment/decrement
+async function handleAdjustSeats(rideId, delta) {
+  try {
+    const res = await API.updateSeats(rideId, {
+      delta,
+      student_id: State.currentStudent ? State.currentStudent.id : null
+    });
+    showToast(res.message || 'Seat count updated!', 'success');
+    loadMyRides();
+    loadCampusStats();
+  } catch (err) {
+    showToast(err.message || 'Failed to update seats', 'danger');
+  }
+}
+
+// Edit Ride Handlers
+async function openEditRideModal(rideId) {
+  try {
+    const modal = document.getElementById('editRideModal');
+    if (!modal) return;
+
+    // Check in-memory store first for instantaneous response
+    let r = null;
+    if (State.myActiveRides && State.myActiveRides.length) {
+      r = State.myActiveRides.find(item => String(item.id) === String(rideId));
+    }
+    if (!r && State.myPastRides && State.myPastRides.length) {
+      r = State.myPastRides.find(item => String(item.id) === String(rideId));
+    }
+    if (!r && State.exactMatches && State.exactMatches.length) {
+      r = State.exactMatches.find(item => String(item.id) === String(rideId));
+    }
+
+    if (!r) {
+      const res = await API.getRide(rideId);
+      r = (res && res.ride) ? res.ride : res;
+    }
+
+    if (!r || !r.id) {
+      showToast('Could not load ride details', 'danger');
+      return;
+    }
+
+    const idEl = document.getElementById('editRideId');
+    const originEl = document.getElementById('editOrigin');
+    const destEl = document.getElementById('editDestination');
+    const dateEl = document.getElementById('editDate');
+    const timeEl = document.getElementById('editTime');
+    const typeEl = document.getElementById('editRideType');
+    const totalEl = document.getElementById('editTotalSeats');
+    const filledEl = document.getElementById('editFilledSeats');
+    const lugEl = document.getElementById('editLuggage');
+    const flightEl = document.getElementById('editFlightTrain');
+    const notesEl = document.getElementById('editNotes');
+
+    if (idEl) idEl.value = r.id;
+
+    // Set Origin with fallback
+    if (originEl) {
+      const targetOrigin = r.origin || 'GLIM Campus (Manamai)';
+      let matched = false;
+      for (let opt of originEl.options) {
+        if (opt.value === targetOrigin) {
+          originEl.value = targetOrigin;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched && targetOrigin) {
+        const customOpt = new Option(targetOrigin, targetOrigin, true, true);
+        originEl.add(customOpt);
+      }
+    }
+
+    // Set Destination with fallback
+    if (destEl) {
+      const targetDest = r.destination || '';
+      let matched = false;
+      for (let opt of destEl.options) {
+        if (opt.value === targetDest) {
+          destEl.value = targetDest;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched && targetDest) {
+        const customOpt = new Option(targetDest, targetDest, true, true);
+        destEl.add(customOpt);
+      }
+    }
+
+    // Strictly normalize date to YYYY-MM-DD for HTML5 date input
+    let normDate = '';
+    if (r.travel_date) {
+      const dStr = String(r.travel_date).trim();
+      if (dStr.includes('T')) {
+        normDate = dStr.split('T')[0];
+      } else if (dStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+        normDate = dStr;
+      } else {
+        try {
+          const dObj = new Date(dStr);
+          if (!isNaN(dObj.getTime())) {
+            const y = dObj.getFullYear();
+            const m = String(dObj.getMonth() + 1).padStart(2, '0');
+            const d = String(dObj.getDate()).padStart(2, '0');
+            normDate = `${y}-${m}-${d}`;
+          }
+        } catch (e) {}
+      }
+    }
+    if (dateEl) dateEl.value = normDate;
+
+    // Strictly normalize time to HH:MM for HTML5 time input
+    let normTime = '';
+    if (r.travel_time) {
+      const tStr = String(r.travel_time).trim();
+      const match = tStr.match(/(\d{1,2}):(\d{2})/);
+      if (match) {
+        normTime = `${match[1].padStart(2, '0')}:${match[2]}`;
+      } else {
+        normTime = tStr;
+      }
+    }
+    if (timeEl) timeEl.value = normTime;
+
+    if (typeEl) typeEl.value = r.ride_type || 'LOOKING_FOR_CAB';
+    if (totalEl) totalEl.value = String(r.total_seats || r.seats_count || 3);
+    if (filledEl) filledEl.value = String(r.filled_seats || 0);
+    if (lugEl) lugEl.value = r.luggage_size || 'Medium';
+    if (flightEl) flightEl.value = r.flight_train_no || '';
+    if (notesEl) notesEl.value = r.notes || '';
+
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+    modal.style.opacity = '1';
+    modal.style.visibility = 'visible';
+    modal.style.pointerEvents = 'auto';
+  } catch (err) {
+    showToast(err.message || 'Error opening edit modal', 'danger');
+  }
+}
+
+function closeEditRideModal() {
+  const modal = document.getElementById('editRideModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  modal.style.display = 'none';
+  modal.style.opacity = '0';
+  modal.style.visibility = 'hidden';
+  modal.style.pointerEvents = 'none';
+}
+
+async function handleEditRideSubmit(e) {
+  e.preventDefault();
+
+  const rideId = document.getElementById('editRideId').value;
+  if (!rideId) return;
+
+  const origin = document.getElementById('editOrigin').value;
+  const destination = document.getElementById('editDestination').value;
+  const travel_date = document.getElementById('editDate').value;
+  const travel_time = document.getElementById('editTime').value;
+  const ride_type = document.getElementById('editRideType').value;
+  const total_seats = parseInt(document.getElementById('editTotalSeats').value, 10) || 1;
+  const filled_seats = parseInt(document.getElementById('editFilledSeats').value, 10) || 0;
+  const luggage_size = document.getElementById('editLuggage').value;
+  const flight_train_no = document.getElementById('editFlightTrain').value;
+  const notes = document.getElementById('editNotes').value;
+
+  if (!destination || !travel_date || !travel_time) {
+    showToast('Destination, date and departure time are required', 'warning');
+    return;
+  }
+
+  const saveBtn = e.target.querySelector('button[type="submit"]');
+  const originalBtnText = saveBtn ? saveBtn.innerHTML : 'Save Changes';
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = '⏳ Saving...';
+  }
+
+  try {
+    const res = await API.updateRide(rideId, {
+      student_id: State.currentStudent ? State.currentStudent.id : null,
+      origin,
+      destination,
+      travel_date,
+      travel_time,
+      ride_type,
+      total_seats,
+      filled_seats,
+      luggage_size,
+      flight_train_no,
+      notes
+    });
+
+    showToast('✨ Ride details updated successfully!', 'success');
+    closeEditRideModal();
+    loadMyRides();
+    loadCampusStats();
+
+    if (State.lastSearchParams) {
+      handleSearchRides();
+    }
+  } catch (err) {
+    showToast(err.message || 'Failed to update ride', 'danger');
+  } finally {
+    if (saveBtn) {
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = originalBtnText;
+    }
+  }
+}
+
+async function updateStatus(rideId, status) {
+  try {
+    const res = await API.updateRideStatus(rideId, status, State.currentStudent.id);
+    showToast(res.message || 'Status updated!', 'success');
+    loadMyRides();
+    loadCampusStats();
+  } catch (err) {
+    showToast(err.message || 'Failed to update status', 'danger');
+  }
+}
+
+async function deleteRidePost(rideId) {
+  if (!confirm('Are you sure you want to permanently delete this ride post?')) return;
+  try {
+    await API.deleteRide(rideId, State.currentStudent.id);
+    showToast('Ride post deleted', 'info');
+    loadMyRides();
+    loadCampusStats();
+  } catch (err) {
+    showToast(err.message || 'Failed to delete', 'danger');
+  }
+}
+
+// 9. Live Campus Stats
+async function loadCampusStats() {
+  // 1. Instant optimistic cached stats
+  const cached = localStorage.getItem('glim_cached_stats');
+  if (cached) {
+    try {
+      const s = JSON.parse(cached);
+      document.getElementById('statActiveRides').innerText = s.activeRides || s.active_rides || '0';
+      document.getElementById('statTotalStudents').innerText = s.totalStudents || s.total_students || '0';
+      document.getElementById('statMatchedRides').innerText = s.matchedRides || s.matched_rides || '0';
+    } catch(e) {}
+  }
+
+  // 2. Background fresh fetch
+  try {
+    const res = await API.getCampusStats();
+    if (res.success && res.stats) {
+      document.getElementById('statActiveRides').innerText = res.stats.activeRides || '0';
+      document.getElementById('statTotalStudents').innerText = res.stats.totalStudents || '0';
+      document.getElementById('statMatchedRides').innerText = res.stats.matchedRides || '0';
+      localStorage.setItem('glim_cached_stats', JSON.stringify(res.stats));
+    } else if (res.active_rides !== undefined) {
+      document.getElementById('statActiveRides').innerText = res.active_rides || '0';
+      document.getElementById('statTotalStudents').innerText = res.total_students || '0';
+      document.getElementById('statMatchedRides').innerText = res.matched_rides || '0';
+      localStorage.setItem('glim_cached_stats', JSON.stringify(res));
+    }
+  } catch (e) {
+    console.warn('Stats background sync note:', e.message);
+  }
+}
+
+// 10. Event Listeners & Utilities
+function initEventListeners() {
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  // Search Form
+  document.getElementById('searchRidesForm').addEventListener('submit', handleSearchRides);
+
+  // Post Form
+  document.getElementById('postRideForm').addEventListener('submit', handleCreateRide);
+
+  // Edit Ride Form
+  const editForm = document.getElementById('editRideForm');
+  if (editForm) editForm.addEventListener('submit', handleEditRideSubmit);
+  const closeEditBtn = document.getElementById('closeEditModalBtn');
+  if (closeEditBtn) closeEditBtn.addEventListener('click', closeEditRideModal);
+
+  // Pool Filters
+  document.getElementById('poolDestFilter').addEventListener('change', loadPublicPool);
+  document.getElementById('poolDateFilter').addEventListener('change', loadPublicPool);
+  document.getElementById('poolTypeFilter').addEventListener('change', loadPublicPool);
+  document.getElementById('clearPoolFilterBtn').addEventListener('click', () => {
+    document.getElementById('poolDestFilter').value = 'ALL';
+    document.getElementById('poolDateFilter').value = '';
+    document.getElementById('poolTypeFilter').value = 'ALL';
+    loadPublicPool();
+  });
+
+  // Direct Login Form
+  const loginForm = document.getElementById('directLoginForm');
+  if (loginForm) loginForm.addEventListener('submit', handleDirectLogin);
+  const closeLoginBtn = document.getElementById('closeModalBtn');
+  if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginModal);
+
+  // Global click-outside & Escape key to close any modal
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-backdrop') || e.target.classList.contains('modal-overlay')) {
+      closeLoginModal();
+      closeEditRideModal();
+      closeSheetsSyncModal();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLoginModal();
+      closeEditRideModal();
+      closeSheetsSyncModal();
+    }
+  });
+}
+
+function copyContact(phone, name) {
+  navigator.clipboard.writeText(phone);
+  showToast(`Copied ${name}'s phone number (${phone}) to clipboard! 📋`, 'info');
+}
+
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `<span>🔔</span> <span>${escapeHTML(message)}</span>`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// -------------------------------------------------------------
+// Google Sheets Cloud Sync Management
+// -------------------------------------------------------------
+
+function checkSyncStatus() {
+  const url = API.getSheetsUrl();
+  const dot = document.getElementById('syncStatusDot');
+  const text = document.getElementById('syncStatusText');
+  const badge = document.getElementById('syncCurrentStatusBadge');
+  const input = document.getElementById('sheetsUrlInput');
+
+  if (input) input.value = url;
+
+  if (url) {
+    if (dot) dot.textContent = '🟢';
+    if (text) text.textContent = 'Sheets Sync';
+    if (badge) {
+      badge.style.background = '#DCFCE7';
+      badge.style.color = '#15803D';
+      badge.textContent = '🟢 Google Sheet Connected';
+    }
+  } else {
+    // Check if running on localhost backend or static
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (dot) dot.textContent = isLocal ? '🔵' : '📊';
+    if (text) text.textContent = isLocal ? 'Local Server' : 'Cloud Sync';
+    if (badge) {
+      if (isLocal) {
+        badge.style.background = '#EFF6FF';
+        badge.style.color = '#1D4ED8';
+        badge.textContent = '🔵 Local Node Server (rides.db)';
+      } else {
+        badge.style.background = '#FEF3C7';
+        badge.style.color = '#B45309';
+        badge.textContent = '🟡 Browser Fallback (Connect Sheet to Sync Devices)';
+      }
+    }
+  }
+}
+
+function openSheetsSyncModal() {
+  if (!State.currentStudent || State.currentStudent.roll_number?.toUpperCase() !== 'FT271049') {
+    alert('⚠️ Google Sheets Cloud Sync management is restricted to Admin FT271049 (Ankit Agrawal).');
+    return;
+  }
+  checkSyncStatus();
+  document.getElementById('sheetsSyncModal').classList.add('active');
+}
+
+function closeSheetsSyncModal() {
+  document.getElementById('sheetsSyncModal').classList.remove('active');
+}
+
+async function saveSheetsSync() {
+  if (!State.currentStudent || State.currentStudent.roll_number?.toUpperCase() !== 'FT271049') {
+    alert('Only Admin FT271049 can update Google Sheets sync settings.');
+    return;
+  }
+  const input = document.getElementById('sheetsUrlInput');
+  const btn = document.getElementById('saveSheetsUrlBtn');
+  const url = input.value.trim();
+
+  if (!url) {
+    API.setSheetsUrl('');
+    checkSyncStatus();
+    showToast('Cloud Sync disabled. Using default mode.', 'info');
+    closeSheetsSyncModal();
+    return;
+  }
+
+  if (!url.startsWith('https://script.google.com/')) {
+    alert('Please enter a valid Google Apps Script URL starting with https://script.google.com/');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Testing Connection...';
+
+  try {
+    const testRes = await fetch(`${url}?action=stats`);
+    const data = await testRes.json();
+    
+    API.setSheetsUrl(url);
+    checkSyncStatus();
+    btn.disabled = false;
+    btn.textContent = '💾 Connect & Save';
+    closeSheetsSyncModal();
+    showToast('🎉 Connected to Google Sheet! Data now synchronizes across all devices in real time.', 'success');
+    
+    // Refresh stats & views
+    loadCampusStats();
+    if (State.activeTab === 'pool') loadPublicPool();
+    if (State.activeTab === 'dashboard') loadStudentDashboard();
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = '💾 Connect & Save';
+    alert('Could not connect to Google Sheet. Make sure you selected "Anyone" in "Who has access" when deploying the Apps Script.\n\nError: ' + err.message);
+  }
+}
+
+function clearSheetsSync() {
+  if (!State.currentStudent || State.currentStudent.roll_number?.toUpperCase() !== 'FT271049') {
+    alert('Only Admin FT271049 can disconnect or change the Google Sheet.');
+    return;
+  }
+  API.setSheetsUrl('');
+  const input = document.getElementById('sheetsUrlInput');
+  if (input) input.value = '';
+  checkSyncStatus();
+  showToast('Google Sheet disconnected.', 'info');
+  closeSheetsSyncModal();
+  loadCampusStats();
+}
+
+async function handleTriggerArchive() {
+  if (!State.currentStudent || State.currentStudent.roll_number?.toUpperCase() !== 'FT271049') {
+    alert('Only Admin FT271049 can run database archiving.');
+    return;
+  }
+
+  const btn = document.getElementById('archivePastRidesBtn');
+  const originalText = btn ? btn.innerHTML : '🧹 Archive Past Rides';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Archiving...';
+  }
+
+  try {
+    const res = await API.archivePastRides(3);
+    showToast(res.message || 'Database cleaned and archived successfully!', 'success');
+    loadCampusStats();
+    if (State.activeTab === 'pool') loadPublicPool();
+    if (State.activeTab === 'dashboard') loadMyRides();
+  } catch (err) {
+    showToast(err.message || 'Archiving failed. Please verify your Google Apps Script deployment.', 'danger');
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+  }
+}
+
+
+
+  </script>
+  
+</body>
+</html>

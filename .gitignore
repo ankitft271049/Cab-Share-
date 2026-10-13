@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# SQLite database files & WAL journals
+*.db-wal
+*.db-shm
+
+# Build logs and environment
+.env
+*.log
+.DS_Store
+Thumbs.db
